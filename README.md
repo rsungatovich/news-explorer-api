@@ -1,1 +1,3 @@
-# news-explorer-api
+# News Explorer API
+
+Дипломная работа студента Яндекс Практикума. 2020
