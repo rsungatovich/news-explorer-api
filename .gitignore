@@ -103,7 +103,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+.venv
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -153,3 +153,4 @@ dist
 .history
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,visualstudiocode,node,git
+/.venv
