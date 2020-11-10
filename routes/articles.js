@@ -1,17 +1,17 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 
+const auth = require('../middlewares/auth');
 const linkValidator = require('../helpers/linkValidator');
-
 const {
   getArticles,
   postArticle,
   deleteArticle,
 } = require('../controllers/articles');
 
-router.get('/', getArticles);
+router.get('/articles', auth, getArticles);
 
-router.post('/', celebrate({
+router.post('/articles', celebrate({
   body: Joi.object().keys({
     keyword: Joi.string().required(),
     title: Joi.string().required(),
@@ -21,12 +21,12 @@ router.post('/', celebrate({
     link: Joi.string().custom(linkValidator).required(),
     image: Joi.string().custom(linkValidator).required(),
   }),
-}), postArticle);
+}), auth, postArticle);
 
-router.delete('/:id', celebrate({
+router.delete('/articles/:id', celebrate({
   params: Joi.object().keys({
     id: Joi.string().hex().length(24),
   }),
-}), deleteArticle);
+}), auth, deleteArticle);
 
 module.exports = router;
