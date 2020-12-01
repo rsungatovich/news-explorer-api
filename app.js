@@ -1,5 +1,4 @@
-require('dotenv')
-  .config();
+require('dotenv').config();
 const cors = require('cors');
 
 const express = require('express');
@@ -34,7 +33,7 @@ mongoose.connect(DATABASE_URL, {
   useFindAndModify: false,
 });
 
-app.use(cors(options));
+app.use('*', cors(options));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(requestLogger);
