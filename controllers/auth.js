@@ -31,12 +31,19 @@ const login = (req, res, next) => {
         { expiresIn: '7d' },
       );
       res.cookie('_id', token, { httpOnly: true, sameSite: true });
-      res.end('Токен отправлен');
+      res.end({ message: 'Токен отправлен' });
     })
     .catch(next);
 };
 
+const logout = (req, res) => {
+  res
+    .clearCookie('_id')
+    .send({ message: 'Токен удален' });
+};
+
 module.exports = {
   login,
+  logout,
   createUser,
 };
